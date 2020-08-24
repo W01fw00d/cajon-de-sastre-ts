@@ -1,16 +1,10 @@
 function validator(expression: string) {
+  const validBrackets = ["{", "}", "(", ")", "[", "]", "<", ">"];
+
   expression = expression
     .split("")
-    .filter(
-      (char) =>
-        char == "{" ||
-        char == "}" ||
-        char == "(" ||
-        char == ")" ||
-        char == "[" ||
-        char == "]" ||
-        char == "<" ||
-        char == ">"
+    .filter((char) =>
+      validBrackets.some((validBracket) => validBracket === char)
     )
     .reduce((prev, next) => prev + next, "");
 
@@ -19,22 +13,10 @@ function validator(expression: string) {
   do {
     length = expression.length;
     expression = expression
-      .replace("{}", "")
-      .replace("{{", "")
-      .replace("}}", "")
-      .replace("}{", "")
-      .replace("[]", "")
-      .replace("[[", "")
-      .replace("]]", "")
-      .replace("][", "")
-      .replace("()", "")
-      .replace("((", "")
-      .replace("))", "")
-      .replace(")(", "")
-      .replace("<>", "")
-      .replace("<<", "")
-      .replace(">>", "")
-      .replace("><", "");
+      .replace(/[\{\}]{2}/g, "")
+      .replace(/[\[\]]{2}/g, "")
+      .replace(/[\(\)]{2}/g, "")
+      .replace(/[\<\>]{2}/g, "");
   } while (length !== expression.length);
 
   return expression === "";
