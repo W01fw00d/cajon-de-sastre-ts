@@ -1,4 +1,4 @@
-import validator from "./bracketEnclosedExpressionValidator";
+import validator from "./bracketEnclosedExpressionValidatorOptimized";
 
 // let expression: string = readline();
 let expression = "{([{(O)}]){}[([]Lql[2])]";

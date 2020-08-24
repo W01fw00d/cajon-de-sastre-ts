@@ -1,4 +1,3 @@
-//fails for expression = {([{(O)}]){}[([]Lql[2])]
 function validator(expression: string) {
   console.error("Starting expression", expression);
 
