@@ -8,15 +8,17 @@ function validator(expression: string) {
     )
     .reduce((prev, next) => prev + next, "");
 
-  let length: number;
+  const getBracketsRegExp = (opener: string, closer: string): RegExp =>
+    RegExp(`[\\${opener}\\${closer}]{2}`);
 
+  let length: number;
   do {
     length = expression.length;
     expression = expression
-      .replace(/[\{\}]{2}/g, "")
-      .replace(/[\[\]]{2}/g, "")
-      .replace(/[\(\)]{2}/g, "")
-      .replace(/[\<\>]{2}/g, "");
+      .replace(getBracketsRegExp("{", "}"), "")
+      .replace(getBracketsRegExp("(", ")"), "")
+      .replace(getBracketsRegExp("[", "]"), "")
+      .replace(getBracketsRegExp("<", ">"), "");
   } while (length !== expression.length);
 
   return expression === "";
