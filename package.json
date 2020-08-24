@@ -1,0 +1,28 @@
+{
+  "name": "cajon-de-sastre-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bracketEnclosedExpressionValidator.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^14.6.0",
+    "nodemon": "^2.0.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  },
+  "scripts": {
+    "start:dev": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/W01fw00d/cajon-de-sastre-ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/W01fw00d/cajon-de-sastre-ts/issues"
+  },
+  "homepage": "https://github.com/W01fw00d/cajon-de-sastre-ts#readme"
+}
