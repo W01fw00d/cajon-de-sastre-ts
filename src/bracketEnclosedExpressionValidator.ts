@@ -19,7 +19,6 @@ function validator(expression: string) {
     Object.keys(object).find((key) => object[key] === value);
 
   let currentBracket: string | undefined;
-  let enclosedCharIndex: number | undefined;
 
   let shallIterate = false;
   let result = true;
@@ -90,28 +89,27 @@ function validator(expression: string) {
         backwardIterator--
       ) {
         currentChar = expression.charAt(backwardIterator);
+        // But a lonely opener bracket is found...
         if (
           validOpenerBrackets.find(
             (validBracket) => currentChar === validBracket
-          ) &&
-          getKeyByValue(openerBrackets, currentChar) === currentBracket
+          )
         ) {
-          const slicer = () =>
-            expression.slice(0, backwardIterator) +
-            expression.slice(forwardIterator + 1, expression.length);
-          expression = slicer();
+          console.error("Result is FALSE");
+          result = false;
           shallIterate = false;
         }
       }
 
       //And no opener bracket has been found...
       if (backwardIterator === -1) {
-        console.error("Result is TRUE");
         // Remaining chars are not brackets, so we can ignore
         expression = "";
       }
     }
   }
+
+  return result;
 }
 
 export default validator;
